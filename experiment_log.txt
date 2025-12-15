@@ -1,0 +1,126 @@
+================================================================================
+STEP 1: Data Loading and Preprocessing
+================================================================================
+Dataset: 4601 samples, 57 features
+Spam: 1813 (39.40%), Legitimate: 2788 (60.60%)
+Train: 3220, Test: 1381
+Standardization complete
+
+================================================================================
+STEP 2: Training Base Classifiers
+================================================================================
+
+Training Naive Bayes...
+  Train: 0.8171 | Test: 0.8197
+  Precision: 0.7001 | Recall: 0.9485
+  F1: 0.8056 | AUC: 0.9343
+  Time: 0.00s
+
+Training Logistic Regression...
+  Train: 0.9283 | Test: 0.9283
+  Precision: 0.9222 | Recall: 0.8934
+  F1: 0.9076 | AUC: 0.9712
+  Time: 0.01s
+
+Training SVM...
+  Train: 0.9624 | Test: 0.9276
+  Precision: 0.9269 | Recall: 0.8860
+  F1: 0.9060 | AUC: 0.9737
+  Time: 0.66s
+
+Training Random Forest...
+  Train: 0.9823 | Test: 0.9486
+  Precision: 0.9539 | Recall: 0.9136
+  F1: 0.9333 | AUC: 0.9866
+  Time: 0.33s
+
+Training Gradient Boosting...
+  Train: 0.9891 | Test: 0.9537
+  Precision: 0.9428 | Recall: 0.9393
+  F1: 0.9411 | AUC: 0.9883
+  Time: 1.27s
+
+Training XGBoost...
+  Train: 0.9851 | Test: 0.9580
+  Precision: 0.9500 | Recall: 0.9430
+  F1: 0.9465 | AUC: 0.9893
+  Time: 0.25s
+
+Base classifier training complete!
+
+================================================================================
+STEP 3: Training Ensemble Methods
+================================================================================
+
+Training Hard Voting Ensemble...
+  Test Accuracy: 0.9479
+  F1-Score: 0.9335
+
+Training Soft Voting Ensemble...
+  Test Accuracy: 0.9479
+  F1-Score: 0.9343
+
+Training Stacking (LR meta-learner)...
+  Test Accuracy: 0.9500
+  F1-Score: 0.9365
+
+Training Stacking (GB meta-learner)...
+  Test Accuracy: 0.9450
+  F1-Score: 0.9304
+  Recall: 0.9338
+
+Ensemble training complete!
+
+================================================================================
+STEP 4: 10-Fold Cross-Validation
+================================================================================
+
+Cross-validating Naive Bayes...
+  Mean Accuracy: 0.8172 ± 0.0109 (95% CI)
+
+Cross-validating Logistic Regression...
+  Mean Accuracy: 0.9272 ± 0.0074 (95% CI)
+
+Cross-validating SVM...
+  Mean Accuracy: 0.9383 ± 0.0058 (95% CI)
+
+Cross-validating Random Forest...
+  Mean Accuracy: 0.9487 ± 0.0040 (95% CI)
+
+Cross-validating Gradient Boosting...
+  Mean Accuracy: 0.9526 ± 0.0053 (95% CI)
+
+Cross-validating XGBoost...
+  Mean Accuracy: 0.9528 ± 0.0038 (95% CI)
+
+Cross-validation complete!
+
+================================================================================
+STEP 5: Calibration Analysis
+================================================================================
+Naive Bayes: ECE = 0.1381, Brier = 0.1780
+Logistic Regression: ECE = 0.0242, Brier = 0.0596
+SVM: ECE = 0.0134, Brier = 0.0563
+Random Forest: ECE = 0.0594, Brier = 0.0428
+Gradient Boosting: ECE = 0.0170, Brier = 0.0363
+XGBoost: ECE = 0.0141, Brier = 0.0338
+Soft Voting: ECE = 0.0566, Brier = 0.0465
+Stacking (LR): ECE = 0.0182, Brier = 0.0362
+Stacking (GB): ECE = 0.0119, Brier = 0.0392
+
+Calibration analysis complete!
+
+================================================================================
+Saving Results
+================================================================================
+Results saved to experimental_results.json
+Models saved to trained_models.pkl
+
+================================================================================
+ALL EXPERIMENTS COMPLETE!
+================================================================================
+
+Summary of Results:
+Base Classifiers: 6
+Ensemble Methods: 4
+Total Models: 10
